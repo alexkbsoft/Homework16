@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Other")]
     [SerializeField] private Transform _firePoint;
+    [SerializeField] private GameObject _deathPanel;
 
     private Rigidbody2D _rb;
     private Animator _animator;
@@ -35,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
     private void OnDeath()
     {
         _animator.SetTrigger("IsDead");
+        _deathPanel.SetActive(true);
     }
     void FixedUpdate()
     {
