@@ -8,16 +8,25 @@ public class Shooter : MonoBehaviour
     [SerializeField] private float _fireSpeed;
     [SerializeField] private Transform _firePoint;
 
+    private PlayerMovement _playerMovement;
+    private Animator _animator;
 
-    public void Shoot(float direction) {
-        var newBullet = Instantiate(_bullet, 
+    void Start() {
+        _playerMovement = GetComponent<PlayerMovement>();
+        _animator = GetComponent<Animator>();
+    }
+
+    public void Shoot() {
+        _animator.SetTrigger("IsAttacking");
+
+        var newBullet = Instantiate(_bullet,
             _firePoint.position,
             Quaternion.identity);
             
         Rigidbody2D bulletRb = newBullet.GetComponent<Rigidbody2D>();
 
         bulletRb.velocity = new Vector2(
-            _fireSpeed * Mathf.Sign(direction),
+            _fireSpeed * Mathf.Sign(_playerMovement.CurrentDirection),
             bulletRb.velocity.y);
     }
 }

@@ -9,6 +9,9 @@ public class TimerPlatform : MonoBehaviour
     public PlatformLimitter Limitter;
     public SliderJoint2D SliderJoint;
 
+    public int StartAngle = -120;
+    public int EndAngle = 60;
+
     void Start()
     {
         Limitter.PlatformCollided += OnPlatformCollided;
@@ -17,11 +20,11 @@ public class TimerPlatform : MonoBehaviour
     private void OnPlatformCollided(GameObject collidedWith) {
         
         if (collidedWith == MaximumCollider) {
-            SliderJoint.angle = 90;
+            SliderJoint.angle = EndAngle;
             MinimumCollider.SetActive(true);
             MaximumCollider.SetActive(false);
         } else if (collidedWith == MinimumCollider) {
-            SliderJoint.angle = -90;
+            SliderJoint.angle = StartAngle;
             MinimumCollider.SetActive(false);
             MaximumCollider.SetActive(true);
         } 

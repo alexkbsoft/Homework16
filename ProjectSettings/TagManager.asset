@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Platform
   - Damagable
+  - EnemyTrigger
   layers:
   - Default
   - TransparentFX
@@ -16,14 +17,14 @@ TagManager:
   - Wheelbarrow
   - Wheel
   - Ground
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Water
+  - Player
+  - DeathLayer
+  - Chains
+  - EnemyTrigger
+  - Enemy
+  - Bullet
+  - Collectible
   - 
   - 
   - 

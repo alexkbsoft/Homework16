@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,8 @@ using UnityEngine.PlayerLoop;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public float CurrentDirection => _currentDirection;
+
     [Header("Movement")]
     [SerializeField] float _jumpForce = 2;
     [SerializeField] float _velocity = 4;
@@ -24,6 +27,8 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer _spriteRenderer;
     private Health _health;
 
+    private float _currentDirection;
+
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
@@ -37,7 +42,14 @@ public class PlayerMovement : MonoBehaviour
     {
         _animator.SetTrigger("IsDead");
         _deathPanel.SetActive(true);
+
+        Invoke("DestroyDelayed", 1.0f);
     }
+
+    private void DestroyDelayed() {
+        Destroy(gameObject);
+    }
+
     void FixedUpdate()
     {
         if (!_health._isAlive)
@@ -79,6 +91,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         if (!Mathf.Approximately(horizontalDirection, 0)) {
+            _currentDirection = horizontalDirection;
             _spriteRenderer.flipX = horizontalDirection < 0;
 
             var curPos = _firePoint.transform.localPosition;
