@@ -9,7 +9,7 @@ public class DamageDealer : MonoBehaviour
     [SerializeField] private bool _selfDestruct;
 
     void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.tag == "Damagable") {
+        if (collision.gameObject.CompareTag("Damagable")) {
             collision.gameObject.GetComponent<Health>().TakeDamage(_damage);
 
             if (_selfDestruct) {

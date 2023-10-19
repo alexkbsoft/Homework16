@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+    private const int IdleState = 0;
+    private const int WalkState = 1;
     [SerializeField] private float Speed = 1.0f;
     [SerializeField] private float TimeToRevert = 2.0f;
     private Animator _animator;
@@ -12,8 +14,6 @@ public class EnemyController : MonoBehaviour
 
     private Rigidbody2D _rb;
 
-    private const int IDLE_STATE = 0;
-    private const int WALK_STATE = 1;
 
     private int _currentState = 1;
 
@@ -28,16 +28,16 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-        if (_currentState == WALK_STATE) {
+        if (_currentState == WalkState) {
             _rb.velocity = new Vector2(Speed, _rb.velocity.y);
         }
     }
 
     void OnTriggerEnter2D(Collider2D coll)
     {
-        if (_currentState == WALK_STATE && coll.CompareTag("EnemyTrigger"))
+        if (_currentState == WalkState && coll.CompareTag("EnemyTrigger"))
         {
-            _currentState = IDLE_STATE;
+            _currentState = IdleState;
             _animator.SetBool("IsMoving", false);
             Invoke("Revert", TimeToRevert);
         }
@@ -45,7 +45,7 @@ public class EnemyController : MonoBehaviour
 
     void Revert()
     {
-        _currentState = WALK_STATE;
+        _currentState = WalkState;
         _animator.SetBool("IsMoving", true);
         _sp.flipX = !_sp.flipX;
         Speed *= -1;

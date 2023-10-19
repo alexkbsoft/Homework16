@@ -19,6 +19,6 @@ public class Collectible : MonoBehaviour
         Destroy(gameObject);
 
         var ev = new CustomEvent(Name);
-        EventBus.Invoke(EventConstants.COLLECTED, ev);
+        EventBus.Invoke(EventConstants.Collected, ev);
     }
 }

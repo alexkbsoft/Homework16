@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Health : MonoBehaviour {
+    public bool IsAlive => _isAlive;
     [SerializeField] private float _maxHealth;
     public bool _isAlive;
     public event Action Dead;

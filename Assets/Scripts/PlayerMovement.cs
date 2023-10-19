@@ -52,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!_health._isAlive)
+        if (!_health.IsAlive)
         {
             return;
         }
@@ -71,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Move(float horizontalDirection, bool isJump)
     {
-        if (!_health._isAlive)
+        if (!_health.IsAlive)
         {
             return;
         }

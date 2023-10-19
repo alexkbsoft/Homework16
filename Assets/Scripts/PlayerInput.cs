@@ -12,8 +12,8 @@ public class PlayerInput : MonoBehaviour
         _playerMovement = GetComponent<PlayerMovement>();
         _shooter = GetComponent<Shooter>();
 
-        EventBus.AddListener(EventConstants.CUTSCENE_START, BlockPlayer);
-        EventBus.AddListener(EventConstants.CUTSCENE_END, UnblockPlayer);
+        EventBus.AddListener(EventConstants.CutsceneStart, BlockPlayer);
+        EventBus.AddListener(EventConstants.CutsceneEnd, UnblockPlayer);
     }
 
     void Update()
@@ -22,12 +22,12 @@ public class PlayerInput : MonoBehaviour
             return;
         }
 
-        float horizontalDirection = Input.GetAxis(GlobalConstants.HORIZONTAL_AXIS);
-        bool jump = Input.GetButtonDown(GlobalConstants.JUMP);
+        float horizontalDirection = Input.GetAxis(GlobalConstants.HorizontalAxis);
+        bool jump = Input.GetButtonDown(GlobalConstants.Jump);
 
         _playerMovement.Move(horizontalDirection, jump);
 
-        if (Input.GetButtonDown(GlobalConstants.FIRE))
+        if (Input.GetButtonDown(GlobalConstants.Fire))
         {
             _shooter.Shoot();
         }
@@ -35,8 +35,8 @@ public class PlayerInput : MonoBehaviour
 
     void OnDestroy()
     {
-        EventBus.AddListener(EventConstants.CUTSCENE_START, BlockPlayer);
-        EventBus.AddListener(EventConstants.CUTSCENE_END, UnblockPlayer);
+        EventBus.AddListener(EventConstants.CutsceneStart, BlockPlayer);
+        EventBus.AddListener(EventConstants.CutsceneEnd, UnblockPlayer);
     }
 
     private void BlockPlayer(CustomEvent ev)

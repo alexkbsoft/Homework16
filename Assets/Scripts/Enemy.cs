@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     }
 
     private void OnDead() {
-        EventBus.Invoke(EventConstants.KILLED, new CustomEvent());
+        EventBus.Invoke(EventConstants.Killed, new CustomEvent());
         
         Destroy(gameObject);
     }

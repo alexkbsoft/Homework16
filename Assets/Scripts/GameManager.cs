@@ -19,9 +19,9 @@ public class GameManager : MonoBehaviour
         _gameStorage.ApplesCount = 0;
         _gameStorage.KillCount = 0;
 
-        EventBus.AddListener(EventConstants.COLLECTED, OnCollect);
-        EventBus.AddListener(EventConstants.KILLED, OnKill);
-        EventBus.AddListener(EventConstants.FINISH_REACHED, OnFinish);
+        EventBus.AddListener(EventConstants.Collected, OnCollect);
+        EventBus.AddListener(EventConstants.Killed, OnKill);
+        EventBus.AddListener(EventConstants.FinishReached, OnFinish);
     }
 
     private void OnCollect(CustomEvent ev)
@@ -66,8 +66,8 @@ public class GameManager : MonoBehaviour
 
     void OnDestroy()
     {
-        EventBus.RemoveListener(EventConstants.COLLECTED, OnCollect);
-        EventBus.RemoveListener(EventConstants.KILLED, OnKill);
-        EventBus.RemoveListener(EventConstants.FINISH_REACHED, OnFinish);
+        EventBus.RemoveListener(EventConstants.Collected, OnCollect);
+        EventBus.RemoveListener(EventConstants.Killed, OnKill);
+        EventBus.RemoveListener(EventConstants.FinishReached, OnFinish);
     }
 }

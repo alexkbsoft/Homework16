@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class GlobalConstants
 {
-    public const string HORIZONTAL_AXIS = "Horizontal";
-    public const string VERTICAL_AXIS = "Vertical";
-    public const string JUMP = "Jump";
-    public const string FIRE = "Fire1";
+    public const string HorizontalAxis = "Horizontal";
+    public const string VerticalAxis = "Vertical";
+    public const string Jump = "Jump";
+    public const string Fire = "Fire1";
 }
 
 public class EventConstants {
-    public const string COLLECTED = "collected";
-    public const string KILLED = "kill";
-    public const string FINISH_REACHED = "finish";
-    public const string CUTSCENE_START = "cutscene_start";
-    public const string CUTSCENE_END = "cutscene_end";
-    public const string SHOW_MESSAGE = "show_message";
-    public const string HIDE_MESSAGE = "show_message";
+    public const string Collected = "collected";
+    public const string Killed = "kill";
+    public const string FinishReached = "finish";
+    public const string CutsceneStart = "cutscene_start";
+    public const string CutsceneEnd = "cutscene_end";
+    public const string ShowMessage = "show_message";
+    public const string HideMessage = "show_message";
 }
 
 public class PhysicsLayers {

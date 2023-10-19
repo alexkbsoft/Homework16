@@ -40,7 +40,7 @@ public class CutScene : MonoBehaviour
     private IEnumerator StartCutScene() {
         yield return new WaitForSeconds(0.5f);
         
-        EventBus.Invoke(EventConstants.CUTSCENE_START, new CustomEvent());
+        EventBus.Invoke(EventConstants.CutsceneStart, new CustomEvent());
         ShowPanels(true);
 
         var prevFollow = _cam.Follow;
@@ -55,7 +55,7 @@ public class CutScene : MonoBehaviour
 
         ShowPanels(false);
 
-        EventBus.Invoke(EventConstants.CUTSCENE_END, new CustomEvent());
+        EventBus.Invoke(EventConstants.CutsceneEnd, new CustomEvent());
     }
 
     private void ShowPanels(bool visible) {
